@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Workout Plan</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="card">
+    {% if message %}
+      <div class="success">✅ {{ message }}</div>
+    {% endif %}
+
+    <h1>🏋️ Your Personalized Workout Plan</h1>
+
+    <h3>User Information</h3>
+    <div class="info">
+      <p><strong>Name:</strong> {{ username }}</p>
+      <p><strong>User ID:</strong> {{ user_id }}</p>
+      <p><strong>Age:</strong> {{ age }}</p>
+      <p><strong>Weight:</strong> {{ weight }} kg</p>
+      <p><strong>Goal:</strong> {{ goal }}</p>
+      <p><strong>Intensity:</strong> {{ intensity }}</p>
+    </div>
+
+    <h3>Workout Plan</h3>
+    <pre class="plan">{{ workout_plan }}</pre>
+
+    <h3>💡 Nutrition Tip</h3>
+    <div class="tip">{{ nutrition_tip }}</div>
+
+    <h3>📝 Share Your Feedback</h3>
+    <form action="/submit-feedback" method="post">
+      <label for="user_id">Your Unique User ID:</label>
+      <input type="number" id="user_id" name="user_id" value="{{ user_id }}" required>
+
+      <label for="feedback">Your Feedback:</label>
+      <textarea id="feedback" name="feedback" rows="3" placeholder="Let us know how we can improve your plan..." required></textarea>
+
+      <button type="submit">Submit Feedback</button>
+    </form>
+
+    <div class="links"><a href="/">← Back to home</a></div>
+  </div>
+</body>
+</html>

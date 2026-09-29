@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitBuddy - All Users</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="card wide">
+    <h2>📋 FitBuddy - All Users &amp; Workout Plans</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th><th>Name</th><th>Age</th><th>Weight (kg)</th>
+          <th>Goal</th><th>Intensity</th><th>Original Plan</th><th>Updated Plan</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.age }}</td>
+          <td>{{ user.weight }}</td>
+          <td>{{ user.goal }}</td>
+          <td>{{ user.intensity }}</td>
+          <td><pre>{{ user.original_plan }}</pre></td>
+          <td><pre>{{ user.updated_plan }}</pre></td>
+        </tr>
+        {% else %}
+        <tr><td colspan="8" style="text-align:center">No users yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="links"><a href="/">← Back to home</a></div>
+  </div>
+</body>
+</html>
